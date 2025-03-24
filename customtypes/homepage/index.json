@@ -11,6 +11,12 @@
         "fieldset": "Slice Zone",
         "config": {
           "choices": {
+            "video_block": {
+              "type": "SharedSlice"
+            },
+            "parallax": {
+              "type": "SharedSlice"
+            },
             "product_grid": {
               "type": "SharedSlice"
             },

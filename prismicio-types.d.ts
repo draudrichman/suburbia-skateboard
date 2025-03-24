@@ -4,7 +4,11 @@ import type * as prismic from "@prismicio/client";
 
 type Simplify<T> = { [KeyType in keyof T]: T[KeyType] };
 
-type HomepageDocumentDataSlicesSlice = ProductGridSlice | HeroSlice;
+type HomepageDocumentDataSlicesSlice =
+  | VideoBlockSlice
+  | ParallaxSlice
+  | ProductGridSlice
+  | HeroSlice;
 
 /**
  * Content for Homepage documents
@@ -288,6 +292,179 @@ type HeroSliceVariation = HeroSliceDefault;
 export type HeroSlice = prismic.SharedSlice<"hero", HeroSliceVariation>;
 
 /**
+ * Primary content in *Parallax → Default → Primary*
+ */
+export interface ParallaxSliceDefaultPrimary {
+  /**
+   * Theme field in *Parallax → Default → Primary*
+   *
+   * - **Field Type**: Select
+   * - **Placeholder**: *None*
+   * - **API ID Path**: parallax.default.primary.theme
+   * - **Documentation**: https://prismic.io/docs/field#select
+   */
+  theme: prismic.SelectField<"Blue" | "Orange" | "Navy" | "Lime">;
+
+  /**
+   * Heading field in *Parallax → Default → Primary*
+   *
+   * - **Field Type**: Title
+   * - **Placeholder**: *None*
+   * - **API ID Path**: parallax.default.primary.heading
+   * - **Documentation**: https://prismic.io/docs/field#rich-text-title
+   */
+  heading: prismic.TitleField;
+
+  /**
+   * Body field in *Parallax → Default → Primary*
+   *
+   * - **Field Type**: Rich Text
+   * - **Placeholder**: *None*
+   * - **API ID Path**: parallax.default.primary.body
+   * - **Documentation**: https://prismic.io/docs/field#rich-text-title
+   */
+  body: prismic.RichTextField;
+
+  /**
+   * Button field in *Parallax → Default → Primary*
+   *
+   * - **Field Type**: Link
+   * - **Placeholder**: *None*
+   * - **API ID Path**: parallax.default.primary.button
+   * - **Documentation**: https://prismic.io/docs/field#link-content-relationship
+   */
+  button: prismic.LinkField<string, string, unknown, prismic.FieldState, never>;
+
+  /**
+   * Background Image field in *Parallax → Default → Primary*
+   *
+   * - **Field Type**: Image
+   * - **Placeholder**: *None*
+   * - **API ID Path**: parallax.default.primary.background_image
+   * - **Documentation**: https://prismic.io/docs/field#image
+   */
+  background_image: prismic.ImageField<never>;
+
+  /**
+   * Foreground Image field in *Parallax → Default → Primary*
+   *
+   * - **Field Type**: Image
+   * - **Placeholder**: *None*
+   * - **API ID Path**: parallax.default.primary.foreground_image
+   * - **Documentation**: https://prismic.io/docs/field#image
+   */
+  foreground_image: prismic.ImageField<never>;
+}
+
+/**
+ * Default variation for Parallax Slice
+ *
+ * - **API ID**: `default`
+ * - **Description**: Default
+ * - **Documentation**: https://prismic.io/docs/slice
+ */
+export type ParallaxSliceDefault = prismic.SharedSliceVariation<
+  "default",
+  Simplify<ParallaxSliceDefaultPrimary>,
+  never
+>;
+
+/**
+ * Primary content in *Parallax → Image on Left → Primary*
+ */
+export interface ParallaxSliceImageOnLeftPrimary {
+  /**
+   * Theme field in *Parallax → Image on Left → Primary*
+   *
+   * - **Field Type**: Select
+   * - **Placeholder**: *None*
+   * - **API ID Path**: parallax.imageOnLeft.primary.theme
+   * - **Documentation**: https://prismic.io/docs/field#select
+   */
+  theme: prismic.SelectField<"Blue" | "Orange" | "Navy" | "Lime">;
+
+  /**
+   * Heading field in *Parallax → Image on Left → Primary*
+   *
+   * - **Field Type**: Title
+   * - **Placeholder**: *None*
+   * - **API ID Path**: parallax.imageOnLeft.primary.heading
+   * - **Documentation**: https://prismic.io/docs/field#rich-text-title
+   */
+  heading: prismic.TitleField;
+
+  /**
+   * Body field in *Parallax → Image on Left → Primary*
+   *
+   * - **Field Type**: Rich Text
+   * - **Placeholder**: *None*
+   * - **API ID Path**: parallax.imageOnLeft.primary.body
+   * - **Documentation**: https://prismic.io/docs/field#rich-text-title
+   */
+  body: prismic.RichTextField;
+
+  /**
+   * Button field in *Parallax → Image on Left → Primary*
+   *
+   * - **Field Type**: Link
+   * - **Placeholder**: *None*
+   * - **API ID Path**: parallax.imageOnLeft.primary.button
+   * - **Documentation**: https://prismic.io/docs/field#link-content-relationship
+   */
+  button: prismic.LinkField<string, string, unknown, prismic.FieldState, never>;
+
+  /**
+   * Background Image field in *Parallax → Image on Left → Primary*
+   *
+   * - **Field Type**: Image
+   * - **Placeholder**: *None*
+   * - **API ID Path**: parallax.imageOnLeft.primary.background_image
+   * - **Documentation**: https://prismic.io/docs/field#image
+   */
+  background_image: prismic.ImageField<never>;
+
+  /**
+   * Foreground Image field in *Parallax → Image on Left → Primary*
+   *
+   * - **Field Type**: Image
+   * - **Placeholder**: *None*
+   * - **API ID Path**: parallax.imageOnLeft.primary.foreground_image
+   * - **Documentation**: https://prismic.io/docs/field#image
+   */
+  foreground_image: prismic.ImageField<never>;
+}
+
+/**
+ * Image on Left variation for Parallax Slice
+ *
+ * - **API ID**: `imageOnLeft`
+ * - **Description**: Default
+ * - **Documentation**: https://prismic.io/docs/slice
+ */
+export type ParallaxSliceImageOnLeft = prismic.SharedSliceVariation<
+  "imageOnLeft",
+  Simplify<ParallaxSliceImageOnLeftPrimary>,
+  never
+>;
+
+/**
+ * Slice variation for *Parallax*
+ */
+type ParallaxSliceVariation = ParallaxSliceDefault | ParallaxSliceImageOnLeft;
+
+/**
+ * Parallax Shared Slice
+ *
+ * - **API ID**: `parallax`
+ * - **Description**: Parallax
+ * - **Documentation**: https://prismic.io/docs/slice
+ */
+export type ParallaxSlice = prismic.SharedSlice<
+  "parallax",
+  ParallaxSliceVariation
+>;
+
+/**
  * Item in *ProductGrid → Default → Primary → Product*
  */
 export interface ProductGridSliceDefaultPrimaryProductItem {
@@ -369,6 +546,51 @@ export type ProductGridSlice = prismic.SharedSlice<
   ProductGridSliceVariation
 >;
 
+/**
+ * Primary content in *VideoBlock → Default → Primary*
+ */
+export interface VideoBlockSliceDefaultPrimary {
+  /**
+   * YouTube Video ID field in *VideoBlock → Default → Primary*
+   *
+   * - **Field Type**: Text
+   * - **Placeholder**: *None*
+   * - **API ID Path**: video_block.default.primary.youtube_video_id
+   * - **Documentation**: https://prismic.io/docs/field#key-text
+   */
+  youtube_video_id: prismic.KeyTextField;
+}
+
+/**
+ * Default variation for VideoBlock Slice
+ *
+ * - **API ID**: `default`
+ * - **Description**: Default
+ * - **Documentation**: https://prismic.io/docs/slice
+ */
+export type VideoBlockSliceDefault = prismic.SharedSliceVariation<
+  "default",
+  Simplify<VideoBlockSliceDefaultPrimary>,
+  never
+>;
+
+/**
+ * Slice variation for *VideoBlock*
+ */
+type VideoBlockSliceVariation = VideoBlockSliceDefault;
+
+/**
+ * VideoBlock Shared Slice
+ *
+ * - **API ID**: `video_block`
+ * - **Description**: VideoBlock
+ * - **Documentation**: https://prismic.io/docs/slice
+ */
+export type VideoBlockSlice = prismic.SharedSlice<
+  "video_block",
+  VideoBlockSliceVariation
+>;
+
 declare module "@prismicio/client" {
   interface CreateClient {
     (
@@ -403,11 +625,21 @@ declare module "@prismicio/client" {
       HeroSliceDefaultPrimary,
       HeroSliceVariation,
       HeroSliceDefault,
+      ParallaxSlice,
+      ParallaxSliceDefaultPrimary,
+      ParallaxSliceImageOnLeftPrimary,
+      ParallaxSliceVariation,
+      ParallaxSliceDefault,
+      ParallaxSliceImageOnLeft,
       ProductGridSlice,
       ProductGridSliceDefaultPrimaryProductItem,
       ProductGridSliceDefaultPrimary,
       ProductGridSliceVariation,
       ProductGridSliceDefault,
+      VideoBlockSlice,
+      VideoBlockSliceDefaultPrimary,
+      VideoBlockSliceVariation,
+      VideoBlockSliceDefault,
     };
   }
 }
