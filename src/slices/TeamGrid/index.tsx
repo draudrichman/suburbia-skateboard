@@ -6,6 +6,7 @@ import { Bounded } from "@/components/Bounded";
 import { Heading } from "@/components/Heading";
 import React from "react";
 import Skater from "./Skater";
+import SlideIn from "@/components/SlideIn";
 
 export type TeamGridProps = SliceComponentProps<Content.TeamGridSlice>;
 
@@ -20,14 +21,18 @@ const TeamGrid: FC<TeamGridProps> = async ({ slice }) => {
       data-slice-variation={slice.variation}
       className="bg-texture bg-brand-navy"
     >
-      <Heading as="h2" size="lg" className="mb-8 text-center text-white">
-        <PrismicText field={slice.primary.heading} />
-      </Heading>
+      <SlideIn>
+        <Heading as="h2" size="lg" className="mb-8 text-center text-white">
+          <PrismicText field={slice.primary.heading} />
+        </Heading>
+      </SlideIn>
       <div className="grid grid-cols-1 gap-8 md:grid-cols-4">
         {skaters.map((skater, index) => (
           <React.Fragment key={index}>
             {skater.data.first_name && (
+              <SlideIn delay={index * 0.1}>
                 <Skater index={index} skater={skater} />
+              </SlideIn>
             )}
           </React.Fragment>
         ))}
