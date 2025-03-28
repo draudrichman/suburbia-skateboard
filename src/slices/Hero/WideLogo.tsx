@@ -8,7 +8,7 @@ import { useIsSafari } from "@/lib/useIsSafari";
 export function WideLogo({ className, ...props }: SVGProps<SVGSVGElement>) {
     const isSafari = useIsSafari(true);
     return (
-        <svg
+        <svg    
             xmlns="http://www.w3.org/2000/svg"
             fill="none"
             viewBox="0 0 1440 553"

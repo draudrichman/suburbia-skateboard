@@ -7,6 +7,7 @@ import { Suspense, useEffect, useRef, useState } from "react";
 import * as THREE from "three";
 import gsap from "gsap";
 import Hotspot from "./Hotspot";
+import { WavyPaths } from "./WavyPaths";
 
 const INITIAL_CAMERA_POSITION = [1.5, 1, 1.4] as const;
 
@@ -228,7 +229,7 @@ function Scene({ deckTextureURL, wheelTextureURL, truckColor, boltColor }: Props
                     </group>
                 </group>
             </group>
-            {/* <ContactShadows opacity={0.6} position={[0, -0.08, 0]} />
+            <ContactShadows opacity={0.6} position={[0, -0.08, 0]} />
             <group
                 rotation={[-Math.PI / 2, 0, -Math.PI / 2]}
                 position={[0, -0.09, -0.5]}
@@ -242,7 +243,7 @@ function Scene({ deckTextureURL, wheelTextureURL, truckColor, boltColor }: Props
                 >
                     <WavyPaths />
                 </Html>
-            </group> */}
+            </group>
         </group>
     )
 }

@@ -10,7 +10,7 @@ export function useIsSafari(defaultValue = false) {
       typeof window === "undefined"
         ? false
         : window.navigator.userAgent.includes("Safari") &&
-            !window.navigator.userAgent.includes("Chrom") // "Chrome" or "Chromium",
+            !window.navigator.userAgent.includes("Chrom") // "Chromium",
     );
   }, []);
 
