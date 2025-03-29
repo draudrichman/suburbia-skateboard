@@ -186,8 +186,8 @@ export function Skateboard({
     return (
         <group
             dispose={null}
-        // rotation={positions[pose].rotation}
-        // position={positions[pose].position}
+            rotation={positions[pose].rotation}
+            position={positions[pose].position}
         >
             <group name="Scene">
                 <mesh
