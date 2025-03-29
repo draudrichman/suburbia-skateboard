@@ -71,7 +71,7 @@ const Page = async (props: {
                     </ButtonLink>
                 </div>
             </CustomizerControlsProvider>
-            {/* <Loading /> */}
+            <Loading />
         </div>
     );
 }

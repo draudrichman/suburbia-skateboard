@@ -1,6 +1,6 @@
 'use client';
 
-import { CameraControls, Environment, useTexture } from "@react-three/drei";
+import { CameraControls, Environment, Preload, useTexture } from "@react-three/drei";
 import { Canvas } from "@react-three/fiber";
 import { Suspense, useEffect, useRef } from "react";
 import { useCustomizerControls } from "./context";
@@ -107,6 +107,7 @@ const Preview = ({ wheelTextureURLs, deckTextureURLs }: Props) => {
                     onStart={onCameraControlStart}
                 />
             </Suspense>
+            <Preload all />
         </Canvas>
     );
 }
